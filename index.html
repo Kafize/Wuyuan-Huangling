@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>婺源篁岭景区</title>
+    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/index.css">
+</head>
+<body>
+    
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="./index.html">
+                    <img src="./images/logo.png" alt="logo">
+                </a>
+            </div>
+            <ul>
+                <li>
+                    <a href="./index.html">首页</a>
+                </li>
+                <li>
+                    <a href="./introduce.html">关于篁岭</a>
+                </li>
+                <li>
+                    <a href="./news.html">热门活动</a>
+                </li>
+            
+            </ul>
+        </nav>
+        <div class="banner">
+           <div class="banner-img">
+                <img src="./banner/20240529021210_41256.jpg" width="100%"  height="100%" alt="">
+                <img src="./banner/20240603032922_76997.jpg" width="100%"  height="100%" alt="">
+                <img src="./banner/20240603063342_50253.jpg" width="100%"  height="100%" alt="">
+                <img src="./banner/20240603032922_76997.jpg" width="100%"  height="100%" alt="">
+                <img src="./banner/20231025025745_20802.jpg" width="100%"  height="100%" alt="">
+           </div>
+           <div class="banner-indicator">
+               <div class="indicator-parents">
+
+               </div>
+           </div>
+        </div>
+        <main>
+            <div class="services">
+                <h1>热门服务</h1>
+                <div class="services-content">
+                    <div>
+                        <img src="./images/1.png" alt="">
+                        <p>
+                           <a href="">门票预定</a>
+                        </p>
+            
+                    </div>
+                    <div>
+                        <img src="./images/2.png" alt="">
+                        <p>
+                            <a href="">住宿预订</a>
+                        </p>
+                    </div>
+                    <div>
+                        <img src="./images/3.png" alt="">
+                        <p>
+                           <a href="">精选套餐</a>
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="services-content">
+                    <div class="img-fluid">
+                        <img src="./images/cart1.png" alt="">
+                        <div class="img-text">
+                            <p>精品住宿</p>
+                        </div>
+                    </div>
+                    <div class="img-fluid">
+                        <img src="./images/cart5.png" alt="">
+                        <div class="img-text">
+                            <p>交通指南</p>
+                        </div>
+                    </div>
+                    <div class="img-fluid">
+                        <img src="./images/cart4.png" alt="">
+                        <div class="img-text">
+                            <p>休闲娱乐</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="information">
+                <h1>旅游资讯</h1>
+                <div class="information-content">
+                    <div class="">
+                        <img src="./images/20240601003542_45156.gif" alt="" width="100%">
+                        <p>就在今天！魔幻流光森林夜游升级重启！（内含夜游优惠政策）</p>
+                        <p class="date">2024-06-01</p>
+                    </div>
+                    <div class="">
+                        <img src="./images/20240529001848_71388.jpg" alt="" width="100%">
+                        <p>共创5A｜欢迎大家来篁岭“找茬”！HUANG LING 参与有奖活动！</p>
+                     
+                        <p class="date">2024-05-29</p>
+                    </div>
+                    <div class="">
+                        <img src="./images/20240601003542_45156.gif" alt="" width="100%">
+                        <p>篁岭文旅连续三年荣获“江西省文化企业二十强”称号</p>
+                        <p class="date">2024-05-25</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+                var imgIndex = 0;
+                var ImgList = document.querySelectorAll('.banner-img img');
+                var imgListLnegth = ImgList.length;
+                var nextToggleIndex = function () {
+                     imgIndex++;
+                    if (imgIndex == imgListLnegth) {
+                        imgIndex = 0;
+                    }
+                    toggleImg()
+                }
+                var toggleImg = function () {
+                    let circleParent = document.querySelectorAll('.indicator-parents div')//获取指示器所有小圆点
+                    console.log("输出")
+                    ImgList.forEach(item => {
+                        item.style.display = 'none'
+                    })//循环遍历将每个img图片隐藏
+                    circleParent.forEach(item => {
+                        item.style.backgroundColor = '#a0a0a0';
+
+                    })//循环将每个指示器背景标为白色
+                    ImgList[imgIndex].style.display = 'block';//根据点击后的对应图片文章显示
+                    circleParent[imgIndex].style.backgroundColor = '#cc2507';//根据点击后的对应指示器背景标为蓝色  
+                }
+                var randomNum=function(){
+                     var randomNumber = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
+                    return randomNumber*1000;
+                }
+                window.onload = function () {
+                    for (let i = 0; i < imgListLnegth; i++) {//根据图片的个数创建指示器
+                        const circleParent = document.querySelector('.indicator-parents')//获取父元素
+                        const circle = document.createElement('div');//创建div
+                        circle.classList.add('indicator');//添加类名
+                        if(i==0){
+                            circle.style.backgroundColor = '#cc2507';//第一个指示器背景标为蓝色
+                        }
+                        circle.addEventListener('click', function () {
+                            imgIndex = i;
+                            toggleImg();
+                            //为每个指示器监听事件。
+                        })
+                        circleParent.appendChild(circle);//添加元素到circleparent
+                    }
+                     setInterval('nextToggleIndex()', randomNum())
+                }
+               
+    </script>
+</body>
+</html>
